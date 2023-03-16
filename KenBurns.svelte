@@ -6,6 +6,7 @@
   export let fadeDuration = 5000;
   export let slideDuration = 25000;
   export let showArrows = true;
+  export let showPagination = true;
 
   const animationNames = [
     'ken-burns-center',
@@ -105,6 +106,7 @@
   };
 
   showArrows = stringToBoolean(showArrows);
+  showPagination = stringToBoolean(showPagination);
 </script>
 
 <div class="image-gallery">
@@ -118,12 +120,14 @@
     <button type="button" class="prev" on:click|preventDefault={prev}>{@html chevron} Prev</button>
     <button type="button" class="next" on:click|preventDefault={next}>Next {@html chevron}</button>
   {/if}
-  <GalleryPagination
-          {images}
-          {currentSlide}
-          animationTime={slideDuration}
-          on:slideChange={handleSlideChange}
-  />
+  {#if showPagination}
+    <GalleryPagination
+            {images}
+            {currentSlide}
+            animationTime={slideDuration}
+            on:slideChange={handleSlideChange}
+    />
+  {/if}
 </div>
 
 <style>

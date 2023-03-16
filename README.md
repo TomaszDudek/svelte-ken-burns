@@ -52,16 +52,16 @@ By default the ImageSlideShow runs in fullscreen. If you need a specific size of
 ### Parameters
 
 ```svelte
-<KenBurns images={gallery} slideDuration="3000" fadeDuration="500" showArrows="false" />
+<KenBurns images={gallery} slideDuration="25000" fadeDuration="5000" showArrows="true" showPagination="true" />
 ```
 
-| Parameter | Default | Description | Unit |
-| --- | --- | --- | --- |
-| images | [] | Array with image paths as string. | ['...'] |
-| slideDuration | 25000 | Time in milliseconds for the Ken Burns effect itself (zoom in / out) + motion. | ms |
-| fadeDuration | 5000 | Time in milliseconds for fade-in effect when the image appear. | ms |
-| showArrows | true | Show or hide arrows on left and right to navigate. | boolean |
-| showNavigation | --- | TBD coming soon.
+| Parameter | Default | Description | Unit    |
+| --- |---------| --- |---------|
+| images | []      | Array with image paths as string. | ['...'] |
+| slideDuration | 25000   | Time in milliseconds for the Ken Burns effect itself (zoom in / out) + motion. | ms      |
+| fadeDuration | 5000    | Time in milliseconds for fade-in effect when the image appear. | ms      |
+| showArrows | true    | Show or hide arrows on left and right to navigate. | boolean |
+| showPagination | true    | Show or hide list with slide indicator. | boolean |
 
 ## Demo
 Coming soon.
