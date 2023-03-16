@@ -1,5 +1,6 @@
 <script>
   import { onDestroy, onMount } from 'svelte';
+  import GalleryPagination from './GalleryPagination.svelte';
 
   export let images = [];
   export let fadeDuration = 5000;
@@ -15,14 +16,14 @@
     'ken-burns-bottom-left',
     'ken-burns-bottom-middle',
     'ken-burns-middle-left',
-    'ken-burns-middle-right',
+    'ken-burns-middle-right'
   ];
 
   let imagePool;
   let slideDurationTimeOut = 0;
   let replaceTimeOut = 0;
   let currentSlide;
-  const chevron = `<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="298" height="512" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 298 511.93"><path fill-rule="nonzero" d="M70.77 499.85c-16.24 16.17-42.53 16.09-58.69-.15-16.17-16.25-16.09-42.54.15-58.7l185.5-185.03L12.23 70.93c-16.24-16.16-16.32-42.45-.15-58.7 16.16-16.24 42.45-16.32 58.69-.15l215.15 214.61c16.17 16.25 16.09 42.54-.15 58.7l-215 214.46z"/></svg>`;
+  const chevron = `<svg class="icon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="298" height="512" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 298 511.93"><path fill-rule="nonzero" d="M70.77 499.85c-16.24 16.17-42.53 16.09-58.69-.15-16.17-16.25-16.09-42.54.15-58.7l185.5-185.03L12.23 70.93c-16.24-16.16-16.32-42.45-.15-58.7 16.16-16.24 42.45-16.32 58.69-.15l215.15 214.61c16.17 16.25 16.09 42.54-.15 58.7l-215 214.46z"/></svg>`;
 
   onMount(() => {
     initSlideShow();
@@ -33,12 +34,15 @@
   });
 
   const stringToBoolean = (value) => {
-    return (String(value) === '1' || String(value).toLowerCase() === 'true');
-  }
+    return String(value) === '1' || String(value).toLowerCase() === 'true';
+  };
 
   const initSlideShow = (startAt = 0) => {
-    if (!images.length) { return }
+    if (!images.length) {
+      return;
+    }
 
+    currentSlide = startAt;
     imagePool.replaceChildren();
     const img = document.createElement('img');
     img.src = images[startAt];
@@ -46,15 +50,15 @@
       stopTimeOuts();
       replaceImage(startAt, img);
     };
-  }
+  };
 
   const stopTimeOuts = () => {
     clearTimeout(slideDurationTimeOut);
     clearTimeout(replaceTimeOut);
-  }
+  };
 
   const replaceImage = (index, img) => {
-    const nextIndex = (index +1) % images.length;
+    const nextIndex = (index + 1) % images.length;
     const rand = Math.random();
     const slideDirection = rand > 0.5 ? 'normal' : 'reverse';
     const animationIndex = Math.floor(rand * animationNames.length);
@@ -75,41 +79,51 @@
     const nextImage = document.createElement('img');
     nextImage.src = images[nextIndex];
 
-
     slideDurationTimeOut = setTimeout(() => {
       replaceImage(nextIndex, nextImage);
-    }, (slideDuration - fadeDuration));
-  }
+    }, slideDuration - fadeDuration);
+  };
 
   const next = () => {
-    if (currentSlide < images.length -1) {
+    if (currentSlide < images.length - 1) {
       initSlideShow(currentSlide + 1);
       return;
     }
     initSlideShow(0);
-  }
+  };
 
   const prev = () => {
-    if (currentSlide != 0) {
+    if (currentSlide !== 0) {
       initSlideShow(currentSlide - 1);
       return;
     }
     initSlideShow(images.length - 1);
-  }
+  };
+
+  const handleSlideChange = (event) => {
+    initSlideShow(parseInt(event.detail.targetSlideId));
+  };
 
   showArrows = stringToBoolean(showArrows);
 </script>
 
 <div class="image-gallery">
-  <div class="image-pool"
-       bind:this={imagePool}
-       style="--slide-duration: {slideDuration}ms;
-                --fade-duration: {fadeDuration}ms;">
-  </div>
+  <div
+          class="image-pool"
+          bind:this={imagePool}
+          style="--slide-duration: {slideDuration}ms;
+                --fade-duration: {fadeDuration}ms;"
+  />
   {#if showArrows}
     <button type="button" class="prev" on:click|preventDefault={prev}>{@html chevron} Prev</button>
     <button type="button" class="next" on:click|preventDefault={next}>Next {@html chevron}</button>
   {/if}
+  <GalleryPagination
+          {images}
+          {currentSlide}
+          animationTime={slideDuration}
+          on:slideChange={handleSlideChange}
+  />
 </div>
 
 <style>
@@ -132,7 +146,7 @@
     display: flex;
     height: 100%;
     position: absolute;
-    top:0;
+    top: 0;
     transition: opacity 1000ms ease;
     transition-delay: 700ms;
     width: 15vw;
@@ -141,16 +155,16 @@
   }
 
   button :global(.icon) {
-    fill: rgba(255,255,255, .35);
+    fill: rgba(255, 255, 255, 0.35);
     height: auto;
     width: 20px;
   }
 
   button.prev {
-    background-image: linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
     justify-content: flex-start;
     left: 0;
-    opacity: .5;
+    opacity: 0.5;
     padding-left: 2vw;
   }
 
@@ -165,11 +179,11 @@
   }
 
   button.next {
-    background-image: linear-gradient(-90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
+    background-image: linear-gradient(-90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
     justify-content: flex-end;
     padding-right: 2vw;
     right: 0;
-    opacity: .5;
+    opacity: 0.5;
   }
 
   button.next:hover {
@@ -250,7 +264,6 @@
     }
   }
 
-
   @keyframes -global-fade-in {
     from {
       opacity: 0;
@@ -260,6 +273,4 @@
       opacity: 1;
     }
   }
-
-
 </style>
