@@ -1,12 +1,15 @@
-# svelte-ken-burns
+# Svelte Ken Burns Slideshow.
+This is a simple and preformat Svelte component that creates an Image SlideShow with the well known Ken Burns effect. 
+
+## svelte-ken-burns
 The Ken Burns effect is a type of panning and zooming effect used in film and video production from still imagery. The name derives from extensive use of the technique by American documentarian Ken Burns. This technique had also been used to produce animatics, simple animated mockups used to previsualize motion pictures, but Burns's name has become associated with the effect in much the same way as Alfred Hitchcock is associated with the dolly zoom.
 
 Check Wikipedia: https://en.wikipedia.org/wiki/Ken_Burns_effect
 
 ### Installation
-
+https://www.npmjs.com/package/svelte-ken-burns-slideshow
 ```sh
-npm install --save-dev svelte-ken-burns
+npm i --save-dev svelte-ken-burns-slideshow
 ```
 
 ### Usage

@@ -1,5 +1,5 @@
 {
-  "name": "svelte-ken-burns",
+  "name": "svelte-ken-burns-slideshow",
   "version": "1.0.0",
   "description": "Image SlideShow - The Ken Burns effect is a type of panning and zooming effect used in film and video production from still imagery.",
   "main": "index.mjs",
@@ -13,7 +13,9 @@
     "Slider",
     "Ken",
     "Burns",
-    "Effect"
+    "Effect",
+    "Svelte",
+    "Component",
   ],
   "author": "Tomasz Dudek",
   "license": "MIT",
