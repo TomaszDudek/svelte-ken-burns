@@ -46,6 +46,7 @@
     currentSlide = startAt;
     imagePool.replaceChildren();
     const img = document.createElement('img');
+    img.classList.add('kenburns-image');
     img.src = images[startAt];
     img.onload = () => {
       stopTimeOuts();
