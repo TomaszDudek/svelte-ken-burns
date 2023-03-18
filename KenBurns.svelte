@@ -78,6 +78,7 @@
     }, slideDuration);
 
     const nextImage = document.createElement('img');
+    nextImage.classList.add('kenburns-image');
     nextImage.src = images[nextIndex];
 
     slideDurationTimeOut = setTimeout(() => {
@@ -207,7 +208,7 @@
     will-change: transform, opacity;
   }
 
-  :global(img) {
+  :global(.kenburns-image) {
     display: block;
     height: 100%;
     object-fit: cover;

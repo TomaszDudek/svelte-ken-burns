@@ -1,3 +1,7 @@
+![npm (tag)](https://img.shields.io/npm/v/svelte-ken-burns-slideshow/latest)
+![GitHub](https://img.shields.io/github/license/tomaszdudek/svelte-ken-burns)
+![GitHub repo size](https://img.shields.io/github/repo-size/tomaszdudek/svelte-ken-burns)
+
 # Svelte Ken Burns Slideshow.
 This is a simple and preformat Svelte component that creates an Image SlideShow with the well known Ken Burns effect. 
 
