@@ -3,7 +3,6 @@
   "version": "1.0.4",
   "description": "Image SlideShow - The Ken Burns effect is a type of panning and zooming effect used in film and video production from still imagery.",
   "main": "index.mjs",
-  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TomaszDudek/svelte-ken-burns.git"
@@ -25,5 +24,13 @@
   "bugs": {
     "url": "https://github.com/TomaszDudek/svelte-ken-burns/issues"
   },
-  "homepage": "https://github.com/TomaszDudek/svelte-ken-burns#readme"
+  "homepage": "https://github.com/TomaszDudek/svelte-ken-burns#readme",
+  "scripts": {
+    "lint": "prettier --plugin-search-dir . --check . && eslint .",
+    "format": "prettier --plugin-search-dir . --write ."
+  },
+  "devDependencies": {
+    "prettier": "^2.8.7",
+    "prettier-plugin-svelte": "^2.10.0"
+  }
 }
