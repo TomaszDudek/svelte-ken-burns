@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/TomaszDudek/svelte-ken-burns#readme",
   "scripts": {
-    "lint": "prettier --plugin-search-dir . --check . && eslint .",
+    "lint": "prettier --plugin-search-dir . --check .",
     "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
