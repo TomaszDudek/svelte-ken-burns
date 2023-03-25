@@ -1,34 +1,34 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
 
-    export let images = [];
-    export let currentSlide;
-    export let animationTime = 10000;
+  export let images = [];
+  export let currentSlide;
+  export let animationTime = 10000;
 
-    const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
-    const clickHandler = (event) => {
-        let targetSlideId = event.target.dataset.index;
-        dispatch('slideChange', {targetSlideId});
-    };
+  const clickHandler = (event) => {
+    let targetSlideId = event.target.dataset.index;
+    dispatch('slideChange', {targetSlideId});
+  };
 </script>
 
 <ul class="pagination" style="--animation-time: {animationTime}ms">
-    {#each images as image, i}
-        <li
-                class="pagination__item"
-                class:active={currentSlide === i}
-                data-index={i}
-                on:click={clickHandler}
-        >
-            {i + 1}
-        </li>
-    {/each}
+  {#each images as image, i}
+    <li
+        class="pagination__item"
+        class:active={currentSlide === i}
+        data-index={i}
+        on:click={clickHandler}
+    >
+      {i + 1}
+    </li>
+  {/each}
 </ul>
 
 <style>
     .pagination {
-        bottom: 56px;
+        bottom: var(--skbs-pagination-offset-bottom, 56px);
         display: flex;
         gap: 4px;
         justify-content: space-between;
@@ -69,7 +69,7 @@
         animation-duration: var(--animation-time);
         animation-name: running-progress;
         animation-timing-function: linear;
-        background-color: rgba(255, 0, 255, 0.5);
+        background-color: rgba(var(--skbs-progress-bar-color, 255, 0, 255, 0.5));
         border-radius: 5px;
         bottom: 0;
         content: '';

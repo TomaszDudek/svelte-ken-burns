@@ -113,9 +113,9 @@
 
 <div class="image-gallery">
   <div
-          class="image-pool"
-          bind:this={imagePool}
-          style="--slide-duration: {slideDuration}ms;
+      class="image-pool"
+      bind:this={imagePool}
+      style="--slide-duration: {slideDuration}ms;
                 --fade-duration: {fadeDuration}ms;"
   />
   {#if showArrows}
@@ -124,159 +124,159 @@
   {/if}
   {#if showPagination}
     <GalleryPagination
-            {images}
-            {currentSlide}
-            animationTime={slideDuration}
-            on:slideChange={handleSlideChange}
+      {images}
+      {currentSlide}
+      animationTime={slideDuration - fadeDuration}
+      on:slideChange={handleSlideChange}
     />
   {/if}
 </div>
 
 <style>
-  .image-pool {
-    background-color: black;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  button {
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    color: transparent;
-    cursor: pointer;
-    display: flex;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    transition: opacity 1000ms ease;
-    transition-delay: 700ms;
-    width: 15vw;
-    will-change: opacity;
-    z-index: 1;
-  }
-
-  button :global(.icon) {
-    fill: rgba(255, 255, 255, 0.35);
-    height: auto;
-    width: 20px;
-  }
-
-  button.prev {
-    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
-    justify-content: flex-start;
-    left: 0;
-    opacity: 0.5;
-    padding-left: 2vw;
-  }
-
-  button.prev :global(.icon) {
-    transform: rotate(180deg);
-  }
-
-  button.prev:hover {
-    opacity: 1;
-    transition: opacity 150ms ease;
-    transition-delay: 0ms;
-  }
-
-  button.next {
-    background-image: linear-gradient(-90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
-    justify-content: flex-end;
-    padding-right: 2vw;
-    right: 0;
-    opacity: 0.5;
-  }
-
-  button.next:hover {
-    opacity: 1;
-    transition: opacity 150ms ease;
-    transition-delay: 0ms;
-  }
-
-  :global(.image-wrapper) {
-    animation-duration: var(--slide-duration), var(--fade-duration);
-    animation-timing-function: linear, ease;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    will-change: transform, opacity;
-  }
-
-  :global(.kenburns-image) {
-    display: block;
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
-  }
-
-  @keyframes -global-ken-burns-center {
-    to {
-      transform: scale3d(1.3, 1.3, 1.3);
-    }
-  }
-
-  @keyframes -global-ken-burns-top-right {
-    to {
-      transform: scale3d(1.3, 1.3, 1.3) translate3d(-10%, 7%, 0);
-    }
-  }
-
-  @keyframes -global-ken-burns-top-left {
-    to {
-      transform: scale3d(1.3, 1.3, 1.3) translate3d(10%, 7%, 0);
-    }
-  }
-
-  @keyframes -global-ken-burns-top-middle {
-    to {
-      transform: scale3d(1.3, 1.3, 1.3) translate3d(0, 10%, 0);
-    }
-  }
-
-  @keyframes -global-ken-burns-bottom-right {
-    to {
-      transform: scale3d(1.3, 1.3, 1.3) translate3d(-10%, -7%, 0);
-    }
-  }
-
-  @keyframes -global-ken-burns-bottom-left {
-    to {
-      transform: scale3d(1.3, 1.3, 1.3) translate3d(10%, -7%, 0);
-    }
-  }
-
-  @keyframes -global-ken-burns-bottom-middle {
-    to {
-      transform: scale3d(1.3, 1.3, 1.3) translate3d(0, -10%, 0);
-    }
-  }
-
-  @keyframes -global-ken-burns-middle-left {
-    to {
-      transform: scale3d(1.3, 1.3, 1.3) translate3d(10%, 0, 0);
-    }
-  }
-
-  @keyframes -global-ken-burns-middle-right {
-    to {
-      transform: scale3d(1.3, 1.3, 1.3) translate3d(-10%, 0, 0);
-    }
-  }
-
-  @keyframes -global-fade-in {
-    from {
-      opacity: 0;
+    .image-pool {
+        background-color: rgba(var(--skbs-background-color, 0, 0, 0, 1));
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        right: 0;
+        top: 0;
     }
 
-    to {
-      opacity: 1;
+    button {
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        color: transparent;
+        cursor: pointer;
+        display: flex;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        transition: opacity 1000ms ease;
+        transition-delay: 700ms;
+        width: 15vw;
+        will-change: opacity;
+        z-index: 1;
     }
-  }
+
+    button :global(.icon) {
+        fill: rgba(255, 255, 255, 0.35);
+        height: auto;
+        width: 20px;
+    }
+
+    button.prev {
+        background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+        justify-content: flex-start;
+        left: 0;
+        opacity: 0.5;
+        padding-left: 2vw;
+    }
+
+    button.prev :global(.icon) {
+        transform: rotate(180deg);
+    }
+
+    button.prev:hover {
+        opacity: 1;
+        transition: opacity 150ms ease;
+        transition-delay: 0ms;
+    }
+
+    button.next {
+        background-image: linear-gradient(-90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+        justify-content: flex-end;
+        padding-right: 2vw;
+        right: 0;
+        opacity: 0.5;
+    }
+
+    button.next:hover {
+        opacity: 1;
+        transition: opacity 150ms ease;
+        transition-delay: 0ms;
+    }
+
+    :global(.image-wrapper) {
+        animation-duration: var(--slide-duration), var(--fade-duration);
+        animation-timing-function: linear, ease;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        will-change: transform, opacity;
+    }
+
+    :global(.kenburns-image) {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    @keyframes -global-ken-burns-center {
+        to {
+            transform: scale3d(1.3, 1.3, 1.3);
+        }
+    }
+
+    @keyframes -global-ken-burns-top-right {
+        to {
+            transform: scale3d(1.3, 1.3, 1.3) translate3d(-10%, 7%, 0);
+        }
+    }
+
+    @keyframes -global-ken-burns-top-left {
+        to {
+            transform: scale3d(1.3, 1.3, 1.3) translate3d(10%, 7%, 0);
+        }
+    }
+
+    @keyframes -global-ken-burns-top-middle {
+        to {
+            transform: scale3d(1.3, 1.3, 1.3) translate3d(0, 10%, 0);
+        }
+    }
+
+    @keyframes -global-ken-burns-bottom-right {
+        to {
+            transform: scale3d(1.3, 1.3, 1.3) translate3d(-10%, -7%, 0);
+        }
+    }
+
+    @keyframes -global-ken-burns-bottom-left {
+        to {
+            transform: scale3d(1.3, 1.3, 1.3) translate3d(10%, -7%, 0);
+        }
+    }
+
+    @keyframes -global-ken-burns-bottom-middle {
+        to {
+            transform: scale3d(1.3, 1.3, 1.3) translate3d(0, -10%, 0);
+        }
+    }
+
+    @keyframes -global-ken-burns-middle-left {
+        to {
+            transform: scale3d(1.3, 1.3, 1.3) translate3d(10%, 0, 0);
+        }
+    }
+
+    @keyframes -global-ken-burns-middle-right {
+        to {
+            transform: scale3d(1.3, 1.3, 1.3) translate3d(-10%, 0, 0);
+        }
+    }
+
+    @keyframes -global-fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
 </style>
