@@ -47,6 +47,7 @@
     imagePool.replaceChildren();
     const img = document.createElement('img');
     img.classList.add('kenburns-image');
+    img.alt = '';
     img.src = images[startAt];
     img.onload = () => {
       stopTimeOuts();
@@ -80,6 +81,7 @@
 
     const nextImage = document.createElement('img');
     nextImage.classList.add('kenburns-image');
+    nextImage.alt = '';
     nextImage.src = images[nextIndex];
 
     slideDurationTimeOut = setTimeout(() => {
