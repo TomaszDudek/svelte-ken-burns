@@ -10,7 +10,7 @@
   const demoStyles1 = `
     .gallery-holder {
        position: relative;
-       max-width: 50vw;
+       max-width: 75vw;
        aspect-ratio: 4 / 3;
     }
   `;
@@ -24,7 +24,7 @@
   const demoStyles2 = `
     .gallery-holder {
        position: relative;
-       max-width: 50vw;
+       max-width: 75vw;
        aspect-ratio: 16 / 9;
     }
   `;
@@ -150,7 +150,9 @@
 
   .gallery-holder {
     margin-bottom: 1rem;
-    max-width: 50vw;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 75vw;
     position: relative;
   }
 
@@ -177,5 +179,8 @@
     width: 500px;
     border-radius: 2px;
     box-shadow: 1px 1px 5px rgb(0 0 0 / 30%);
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>
