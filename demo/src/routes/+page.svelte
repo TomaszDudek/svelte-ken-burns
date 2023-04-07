@@ -100,7 +100,13 @@
 
 <h2>Demo 2</h2>
 <div class="gallery-holder demo2">
-  <KenBurns slideDuration="15000" fadeDuration="3000" images={shuffleArray(gallery)} --skbs-progress-bar-color="255, 255, 0, 0.5" --skbs-pagination-offset-bottom="3px"/>
+  <KenBurns
+    slideDuration="15000"
+    fadeDuration="3000"
+    images={shuffleArray(gallery)}
+    --skbs-progress-bar-color="255, 255, 0, 0.5"
+    --skbs-pagination-offset-bottom="3px"
+  />
 </div>
 
 <pre>
@@ -138,9 +144,9 @@
 </pre>
 
 <style>
-    h2 {
-        margin-top: 3em;
-    }
+  h2 {
+    margin-top: 3em;
+  }
 
   .gallery-holder {
     margin-bottom: 1rem;
@@ -162,14 +168,14 @@
   }
 
   pre {
-      font-family: monospace;
-      background-color: lightgray;
-      font-size: 1.2em;
-      border: 1px solid #999;
-      color: black;
-      line-height: 1.5;
-      width: 500px;
-      border-radius: 2px;
-      box-shadow: 1px 1px 5px rgb(0 0 0 / 30%);
+    font-family: monospace;
+    background-color: lightgray;
+    font-size: 1.2em;
+    border: 1px solid #999;
+    color: black;
+    line-height: 1.5;
+    width: 500px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 5px rgb(0 0 0 / 30%);
   }
 </style>
