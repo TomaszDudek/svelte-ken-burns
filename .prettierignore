@@ -2,6 +2,7 @@
 build
 dist
 coverage
+.svelte-kit
 
 # Ignore all HTML files:
 *.html
